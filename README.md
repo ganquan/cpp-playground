@@ -10,6 +10,7 @@
 brew install cmake
 ```
 * gtest
+
 CMakeLists.txt会获取gtest，确保你的网络环境可以访问github
 
 ## Visual Studio Code插件
