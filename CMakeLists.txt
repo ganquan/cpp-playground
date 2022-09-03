@@ -7,17 +7,18 @@ project(cpp-playground)
 set(SRC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(CMAKE_CXX_STANDARD 17)
 
-# 配置gtest
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/e2239ee6043f73722e7aa812a459f54a28552929.zip
-)
-FetchContent_MakeAvailable(googletest)
-include(GoogleTest)
+include_directories(/opt/homebrew/include)
+link_directories(/opt/homebrew/lib)
+
+
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+find_package(Glog REQUIRED)
+include_directories(${GLOG_INCLUDE_DIRS})
+
 
 enable_testing()
-
 # 定义获取子目录的宏
 macro(SUBDIRLIST result curdir)
   file(
@@ -43,9 +44,14 @@ foreach(d ${SUBDIRS})
     add_executable(${d}_test ${SRC_ROOT}/${d}/${d}_test.cpp
                             ${SRC_ROOT}/${d}/${d}.cpp)
 
-    target_link_libraries(${d}_test gtest_main gmock_main)
-
+    target_link_libraries(${d}_test PUBLIC GTest::GTest GTest::Main)
+  
     gtest_discover_tests(${d}_test)
   endif()
 
 endforeach()
+
+add_executable(hello
+  src/hello.cpp
+)
+target_link_libraries(hello glog::glog)
