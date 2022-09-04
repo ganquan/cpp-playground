@@ -55,3 +55,8 @@ add_executable(hello
   src/hello.cpp
 )
 target_link_libraries(hello glog::glog)
+
+add_executable(measure
+  src/measure.cpp
+)
+target_link_libraries(measure glog::glog)

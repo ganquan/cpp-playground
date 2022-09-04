@@ -79,7 +79,8 @@
         "functional": "cpp",
         "iterator": "cpp",
         "utility": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "thread": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
