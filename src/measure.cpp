@@ -1,10 +1,8 @@
-
-
 #include <glog/logging.h>
 
 #include <functional>
 
-void measure(std::string label, std::function<void()> const & lambda) {
+void measure(std::string label, std::function<void()> const& lambda) {
     auto start = std::chrono::high_resolution_clock::now();
 
     lambda();
