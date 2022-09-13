@@ -38,6 +38,8 @@ include_directories(${GTEST_INCLUDE_DIRS})
 find_package(Glog REQUIRED)
 include_directories(${GLOG_INCLUDE_DIRS})
 
+find_package(fmt REQUIRED)
+include_directories(${FMT_INCLUDE_DIRS})
 
 enable_testing()
 # 定义获取子目录的宏
@@ -81,3 +83,8 @@ add_executable(measure
   src/measure.cpp
 )
 target_link_libraries(measure glog::glog)
+
+add_executable(fmt_test
+src/fmt_test.cpp
+)
+target_link_libraries(fmt_test fmt::fmt)
