@@ -80,7 +80,8 @@
         "iterator": "cpp",
         "utility": "cpp",
         "random": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "condition_variable": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
