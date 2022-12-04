@@ -88,3 +88,7 @@ add_executable(fmt_test
 src/fmt_test.cpp
 )
 target_link_libraries(fmt_test fmt::fmt)
+
+add_executable( concurrency
+  src/concurrency.cpp
+)
