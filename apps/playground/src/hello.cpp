@@ -1,5 +1,5 @@
+#include "spdlog/spdlog.h"
 #include <future>
-#include <glog/logging.h>
 #include <iostream>
 #include <thread>
 
@@ -10,10 +10,6 @@ int foo() {
 }
 
 int main(int argc, char **argv) {
-    FLAGS_log_dir = "./";
-    FLAGS_logtostdout = true;
-    FLAGS_alsologtostderr = false;
-    google::InitGoogleLogging(argv[0]);
 
     auto future = std::async(std::launch::async, []() {
         std::this_thread::sleep_for(std::chrono::seconds(5));
@@ -23,8 +19,8 @@ int main(int argc, char **argv) {
     auto future2 = std::async(std::launch::async, foo);
 
     // Do something else ?
-    LOG(INFO) << "Hello World!";
-    LOG(INFO) << "Wait 5 sec...";
+    spdlog::info("Hello World!");
+    spdlog::info("Wait 5 sec...");
 
     future.wait();
     future2.wait();
