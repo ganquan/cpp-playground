@@ -15,6 +15,8 @@ void measure(std::string label, std::function<void()> const &lambda) {
 
 int main(int argc, char **argv) {
 
+    spdlog::info("hello from main.");
+
     measure("test measure", []() {
         spdlog::info("Enter lambda.");
         spdlog::info("Leave lambda.");

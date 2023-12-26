@@ -1,15 +1,15 @@
 # vim: set fenc=utf-8 ft=dosini:
 # see: https://github.com/skywind3000/asynctasks.vim/wiki/Task-Config
 
-# define a new task named "file-build"
+[project-config]
+command=cmake -S . -B build -GNinja 
+cwd=$(VIM_ROOT)
+output=quickfix
+
+# define a new task named "project-build"
 [project-build]
-
-# shell command, use quotation for filenames containing spaces
-# check ":AsyncTaskMacro" to see available macros
-command=cmake .. && cmake --build . -- -j 10
-
-# working directory, can change to $(VIM_ROOT) for project root
-cwd=$(VIM_ROOT)/build/
+command=ninja -C build 
+cwd=$(VIM_ROOT)
 
 # output mode, can be one of quickfix and terminal
 # - quickfix: output to quickfix window
@@ -24,6 +24,11 @@ errorformat=%f:%l:%m
 save=1
 
 [project-run]
-command=./concurrency
-cwd=$(VIM_ROOT)/build/
+command=./measure
+cwd=$(VIM_ROOT)/build/apps/playground
 output=terminal
+
+[project-clean]
+command=cmake --build build --target clean
+cwd=$(VIM_ROOT)
+output=quickfix
