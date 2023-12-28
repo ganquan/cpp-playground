@@ -35,3 +35,4 @@
 # Directory
 build/
 .cache/
+data/

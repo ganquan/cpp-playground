@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM ubuntu:latest
 LABEL Description="Build Dev Environment"
 
 ENV HOME /root
@@ -32,7 +32,10 @@ RUN apt-get update && apt-get upgrade -y && apt-get -y --no-install-recommends i
     unzip \
     autojump \
     zsh \
-    clang-format
+    clang-format \
+    libmlpack-dev \
+    mlpack-bin \
+    libarmadillo-dev
 
 
 
@@ -73,6 +76,17 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
     -a 'bindkey "\$terminfo[kcuu1]" history-substring-search-up' \
     -a 'bindkey "\$terminfo[kcud1]" history-substring-search-down' \
     -a 'alias vv="nvim"'
+
+
+# install cereal
+# RUN cd ${HOME} && \
+#      wget --no-check-certificate --quiet \
+#          https://github.com/USCiLab/cereal/archive/refs/tags/v1.3.2.tar.gz && \
+#          tar xzf ./v1.3.2.tar.gz && \
+#          cd ./cereal-1.3.2/include && \
+#          cp -r cereal /usr/local/include/ && \
+#          cd ../.. && \
+#          rm -rf ./cereal-1.3.2
 
 # start zsh
 CMD [ "zsh" ]
