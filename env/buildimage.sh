@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_NAME="imganquan/cppenv-ub"
+IMAGE_NAME="imganquan/cppenv-ub-mlpack"
 IMAGE_TAG="0.1"
 
 

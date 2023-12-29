@@ -1,8 +1,9 @@
 #!/bin/bash
 
-IMAGE_NAME="imganquan/cppenv-ub"
+#IMAGE_NAME="imganquan/cppenv-ub"
+IMAGE_NAME="imganquan/cppenv-ub-mlpack"
 IMAGE_TAG="0.1"
-CONTAINER_NAME="ubuntu"
+CONTAINER_NAME="ub-cpp-mlpack"
 
 # docker run -it --rm --name=cpp-playground \
 #  --mount type=bind,source=${PWD},target=/src \

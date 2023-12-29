@@ -32,10 +32,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get -y --no-install-recommends i
     unzip \
     autojump \
     zsh \
-    clang-format \
-    libmlpack-dev \
-    mlpack-bin \
-    libarmadillo-dev
+    clang-format 
 
 
 
@@ -55,21 +52,10 @@ RUN cd ${HOME} && \
         cd ${HOME}/.config && \
         git clone https://github.com/ganquan/neovim-config.git nvim
 
-# Let us add some heavy dependency
-# RUN cd ${HOME} && \
-#     wget --no-check-certificate --quiet \
-#         https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.gz && \
-#         tar xzf ./boost_1_77_0.tar.gz && \
-#         cd ./boost_1_77_0 && \
-#         ./bootstrap.sh && \
-#         ./b2 install && \
-#         cd .. && \
-#         rm -rf ./boost_1_77_0
-
+#install ohmyzsh
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
     -p git \
     -p autojump \
-    -p ssh-agent \
     -p https://github.com/zsh-users/zsh-autosuggestions \
     -p https://github.com/zsh-users/zsh-completions \
     -p https://github.com/zsh-users/zsh-syntax-highlighting \
@@ -78,15 +64,25 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
     -a 'alias vv="nvim"'
 
 
-# install cereal
-# RUN cd ${HOME} && \
-#      wget --no-check-certificate --quiet \
-#          https://github.com/USCiLab/cereal/archive/refs/tags/v1.3.2.tar.gz && \
-#          tar xzf ./v1.3.2.tar.gz && \
-#          cd ./cereal-1.3.2/include && \
-#          cp -r cereal /usr/local/include/ && \
-#          cd ../.. && \
-#          rm -rf ./cereal-1.3.2
+#install mlpack
+RUN apt-get -y install \
+    libarmadillo-dev \
+    libcereal-dev \
+    binutils-dev \
+    libensmallen-dev \
+    libstb-dev && \
+    cd ${HOME} && \
+     wget --no-check-certificate --quiet \
+         http://mlpack.org/files/mlpack-4.3.0.tar.gz && \
+         tar xzf ./mlpack-4.3.0.tar.gz && \
+         cd mlpack-4.3.0 && \
+         mkdir build && \
+         cd build && \
+         cmake .. && \
+         make -j $(nproc) && \
+         make install && \
+         cd .. && \
+         rm -rf ./mlpack-4.3.0
 
 # start zsh
 CMD [ "zsh" ]
