@@ -6,7 +6,7 @@ target_compile_features(mlapp PRIVATE cxx_std_17)
 
 target_link_libraries(mlapp PRIVATE 
     fmt::fmt 
-    spdlog::spdlog_header_only
+    spdlog::spdlog
 )
 
 add_executable(mnist_simple
@@ -15,5 +15,5 @@ add_executable(mnist_simple
 target_link_libraries(mnist_simple PRIVATE 
     armadillo
     fmt::fmt 
-    spdlog::spdlog_header_only
+    spdlog::spdlog
 )

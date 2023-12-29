@@ -1,6 +1,6 @@
-#include "spdlog/spdlog.h"
 #include <fmt/core.h>
 #include <functional>
+#include <spdlog/spdlog.h>
 
 void measure(std::string label, std::function<void()> const &lambda) {
     auto start = std::chrono::high_resolution_clock::now();

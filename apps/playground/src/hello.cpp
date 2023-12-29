@@ -1,6 +1,6 @@
-#include "spdlog/spdlog.h"
 #include <future>
 #include <iostream>
+#include <spdlog/spdlog.h>
 #include <thread>
 
 int foo() {

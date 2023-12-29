@@ -29,7 +29,7 @@ add_executable(hello
   ./src/hello.cpp
 )
 target_link_libraries(hello 
-    spdlog::spdlog_header_only
+    spdlog::spdlog
 )
 ########################################
 
@@ -39,7 +39,7 @@ add_executable(measure
 )
 target_link_libraries(measure 
     fmt::fmt 
-    spdlog::spdlog_header_only
+    spdlog::spdlog
 )
 ########################################
 
@@ -48,7 +48,7 @@ add_executable(fmt_test
   ./src/fmt_test.cpp
 )
 target_link_libraries(fmt_test 
-    fmt::fmt
+   fmt::fmt
 )
 ########################################
 

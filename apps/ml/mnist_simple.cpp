@@ -14,10 +14,11 @@
  * @author Omar Shrit
  */
 #define MLPACK_ENABLE_ANN_SERIALIZATION
-#include "spdlog/spdlog.h"
 #include <cstdlib>
 #include <fmt/core.h>
+#include <fmt/format.h>
 #include <mlpack.hpp>
+#include <spdlog/spdlog.h>
 
 #if ((ENS_VERSION_MAJOR < 2) || \
      ((ENS_VERSION_MAJOR == 2) && (ENS_VERSION_MINOR < 13)))
